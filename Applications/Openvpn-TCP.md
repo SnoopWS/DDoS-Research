@@ -6,7 +6,9 @@ Society is more prone to ddos attacks over 1M dollars in revenue is loss every m
 
 A socket flood is a type of attack where the attacker attempts to establish an huge number of connections, thereby overwhelming the target's CPU.
 
-![Socket Flood Image](https://github.com/SnoopWS/DDoS-Research/assets/123210023/3988130b-bfe3-4869-bea3-9ca0e98e852e.png)
+![image](https://github.com/SnoopWS/DDoS-Research/assets/123210023/9a3eced8-1db8-46d6-a979-376ac9232f9d)
+
+
 
 ## 🔍 Analyzing Socket Floods
 
@@ -27,7 +29,8 @@ We can follow the packets using `tcpdump` by making a simple expression:
 tcpdump -i any 'tcp[13] == 24 and tcp[4:4] == 1 and tcp[12] / 16 == 5'
 ```
 
-![tcpdump Image](https://github.com/SnoopWS/DDoS-Research/assets/123210023/d9a8162b-fc93-437c-a570-c3cbd619f01b.png)
+![image](https://github.com/SnoopWS/DDoS-Research/assets/123210023/19391622-1685-4696-9bb5-b5696ddc3983)
+
 
 ## 🎖️ NBPF Compiler
 
@@ -37,7 +40,8 @@ After compilation, we obtain the following bytecode:
 
 > 17,48 0 0 0,84 0 0 240,21 0 13 64,48 0 0 9,21 0 11 6,40 0 0 6,69 9 0 8191,177 0 0 0,80 0 0 13,21 0 6 24,64 0 0 4,21 0 4 1,80 0 0 12,52 0 0 16,21 0 1 5,6 0 0 65535,6 0 0 0
 
-![cBPF Image](https://github.com/SnoopWS/DDoS-Research/assets/123210023/9f96e681-0d03-404e-b9f4-63ef455d3370.png)
+![image](https://github.com/SnoopWS/DDoS-Research/assets/123210023/23a13751-79e4-4db4-81b1-3ca8bf51d118)
+
 
 After inputing this bytecode into a iptable using the BPF module, we get the following rule:
 
