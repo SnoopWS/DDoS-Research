@@ -72,7 +72,7 @@ Unfortunately, mobile devices do not have libpcap support. To account for this l
 iptables -t raw -A PREROUTING -p tcp --syn --dport 1194 -m hashlimit --hashlimit 2/minute --hashlimit-mode srcip --hashlimit-name syn_rate_limit -j ACCEPT
 ```
 
-Now, let's only allow the first SYN packet to be registered via a SYN PROXY if the packet can't meet the conditions it will not complete the handshake and unable to establish a connection.:
+Now, let's only allow the first SYN packet to be registered via a SYN PROXY if the packet can't meet the conditions it will not complete the handshake and unable to establish a connection:
 
 ```
 # Synproxy all invalid/blocked connections
